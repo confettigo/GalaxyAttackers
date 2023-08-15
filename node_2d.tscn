@@ -1,17 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://3tb7ibgbys07"]
+[gd_scene load_steps=7 format=3 uid="uid://3tb7ibgbys07"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_l8ik4"]
 [ext_resource type="Texture2D" uid="uid://c82vfj31i5n0f" path="res://ship2.png" id="2_atuyh"]
 [ext_resource type="Texture2D" uid="uid://lfv3uqxxg85l" path="res://star.png" id="3_0dgkb"]
 [ext_resource type="Script" path="res://Star.gd" id="4_2uujy"]
-[ext_resource type="Texture2D" uid="uid://dqa8jkh4tj18o" path="res://missile.png" id="5_5j27w"]
-[ext_resource type="Script" path="res://missile.gd" id="5_5wvbb"]
+[ext_resource type="AudioStream" uid="uid://utk2nu6314l1" path="res://pew.wav" id="5_pmv0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfuk"]
 size = Vector2(79, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qd3r"]
-size = Vector2(20, 60)
 
 [node name="Node2D" type="Node2D"]
 
@@ -82,6 +78,12 @@ position = Vector2(446, 1017)
 texture = ExtResource("3_0dgkb")
 script = ExtResource("4_2uujy")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(340, 880)
+current = true
+
+[node name="projectiles" type="Node2D" parent="."]
+
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(338, 812)
 script = ExtResource("1_l8ik4")
@@ -94,12 +96,5 @@ shape = SubResource("RectangleShape2D_vnfuk")
 position = Vector2(1, 1)
 texture = ExtResource("2_atuyh")
 
-[node name="missile" type="Area2D" parent="."]
-position = Vector2(197, 805)
-script = ExtResource("5_5wvbb")
-
-[node name="Sprite2D" type="Sprite2D" parent="missile"]
-texture = ExtResource("5_5j27w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="missile"]
-shape = SubResource("RectangleShape2D_0qd3r")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("5_pmv0c")
