@@ -1,6 +1,6 @@
 extends Sprite2D
 var screen_height = 0
-var speed = 100
+var speed = 150
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_height = get_viewport().get_visible_rect().size.y
