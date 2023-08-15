@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://3tb7ibgbys07"]
+[gd_scene load_steps=7 format=3 uid="uid://3tb7ibgbys07"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_l8ik4"]
 [ext_resource type="Texture2D" uid="uid://c82vfj31i5n0f" path="res://ship2.png" id="2_atuyh"]
 [ext_resource type="Texture2D" uid="uid://lfv3uqxxg85l" path="res://star.png" id="3_0dgkb"]
 [ext_resource type="Script" path="res://Star.gd" id="4_2uujy"]
+[ext_resource type="Texture2D" uid="uid://dqa8jkh4tj18o" path="res://missile.png" id="5_5j27w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfuk"]
 size = Vector2(79, 80)
@@ -88,3 +89,8 @@ shape = SubResource("RectangleShape2D_vnfuk")
 [node name="Sprite2D" type="Sprite2D" parent="player"]
 position = Vector2(1, 1)
 texture = ExtResource("2_atuyh")
+
+[node name="Missile" type="Sprite2D" parent="."]
+position = Vector2(339, 769)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_5j27w")
