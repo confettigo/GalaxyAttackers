@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://3tb7ibgbys07"]
+[gd_scene load_steps=9 format=3 uid="uid://3tb7ibgbys07"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_l8ik4"]
 [ext_resource type="Texture2D" uid="uid://c82vfj31i5n0f" path="res://ship2.png" id="2_atuyh"]
 [ext_resource type="Texture2D" uid="uid://lfv3uqxxg85l" path="res://star.png" id="3_0dgkb"]
 [ext_resource type="Script" path="res://Star.gd" id="4_2uujy"]
 [ext_resource type="AudioStream" uid="uid://utk2nu6314l1" path="res://pew.wav" id="5_pmv0c"]
+[ext_resource type="PackedScene" uid="uid://diok8w7p8mr57" path="res://enemy.tscn" id="6_1sdlt"]
+[ext_resource type="Script" path="res://enemies.gd" id="6_8qnti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfuk"]
 size = Vector2(79, 80)
@@ -98,3 +100,37 @@ texture = ExtResource("2_atuyh")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource("5_pmv0c")
+
+[node name="enemies" type="Node2D" parent="."]
+position = Vector2(322, 234)
+script = ExtResource("6_8qnti")
+
+[node name="enemy" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(-200.73, -52.1764)
+
+[node name="enemy2" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(-100.73, -52.1764)
+
+[node name="enemy3" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(2.26971, -52.1764)
+
+[node name="enemy4" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(102.27, -52.1764)
+
+[node name="enemy5" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(200.27, -52.1764)
+
+[node name="enemy6" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(-200.73, 49.8236)
+
+[node name="enemy7" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(-100.73, 49.8236)
+
+[node name="enemy8" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(2.26971, 49.8236)
+
+[node name="enemy9" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(102.27, 49.8236)
+
+[node name="enemy10" parent="enemies" instance=ExtResource("6_1sdlt")]
+position = Vector2(200.27, 49.8236)

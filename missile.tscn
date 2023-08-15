@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqa8jkh4tj18o" path="res://missile.png" id="2_7bv4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qd3r"]
-size = Vector2(20, 60)
+size = Vector2(10, 30)
 
 [node name="missile" type="Area2D"]
 position = Vector2(197, 805)
