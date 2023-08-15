@@ -11,6 +11,10 @@ var screen_width = 0
 func _ready():
 	screen_width = get_viewport().get_visible_rect().size.x
 
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		_shoot()
+
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -24,4 +28,5 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 
-	move_and_slide()
+func _shoot():
+	print("shoot")
