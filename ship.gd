@@ -15,6 +15,7 @@ func _ready():
 	instance = missile.instantiate()
 	var node = get_tree().root.get_child(0).get_node("projectiles")
 	node.add_child.call_deferred(instance)
+	instance.position.x = -100
 	instance.hide()
 
 func _physics_process(delta):
@@ -40,3 +41,7 @@ func _shoot():
 	instance.position = self.position
 	instance.position.y -= 10
 	instance.show()
+
+
+func _on_enemy_body_entered(body):
+	pass # Replace with function body.

@@ -6,12 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qd3r"]
 size = Vector2(10, 30)
 
-[node name="missile" type="Area2D"]
+[node name="missile" type="Area2D" groups=["missile"]]
 position = Vector2(197, 805)
 script = ExtResource("1_fne7v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["missile"]]
 texture = ExtResource("2_7bv4y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["missile"]]
 shape = SubResource("RectangleShape2D_0qd3r")

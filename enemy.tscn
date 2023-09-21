@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://diok8w7p8mr57"]
+[gd_scene load_steps=8 format=3 uid="uid://diok8w7p8mr57"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_pc5y2"]
 [ext_resource type="Texture2D" uid="uid://c78m6rnxrug3r" path="res://invader.png" id="2_5uurm"]
+[ext_resource type="AudioStream" uid="uid://dbhi0wi7qd15n" path="res://wahwah.wav" id="3_q8ntt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u45dp"]
+size = Vector2(81, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pgn7"]
 atlas = ExtResource("2_5uurm")
@@ -25,16 +29,18 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkrmm"]
-size = Vector2(79.5, 80)
-
 [node name="enemy" type="Area2D"]
 position = Vector2(130, 146)
 script = ExtResource("1_pc5y2")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_u45dp")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4wfye")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 0)
-shape = SubResource("RectangleShape2D_dkrmm")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q8ntt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
