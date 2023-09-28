@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="GalaxyAttackers"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="res://scenes/node_2d.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+global="*res://scripts/globalvariables.gd"
+ScoreManager="*res://scripts/scoreManager.gd"
 
 [display]
 

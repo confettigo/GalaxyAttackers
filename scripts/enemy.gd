@@ -1,10 +1,12 @@
 extends Area2D
 var speed = 50
 var screen_width
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
 	screen_width = get_viewport().get_visible_rect().size.x
+	
 
 
 
@@ -22,7 +24,7 @@ func _on_area_entered(area):
 		death(area)
 
 func death(area):
-	$AudioStreamPlayer.play()
+	ScoreManager.onDeath()
 	area.position.x = -100
 	queue_free()
-	print("i love my boyfriend")
+	

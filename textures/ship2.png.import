@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c78m6rnxrug3r"
-path="res://.godot/imported/invader.png-bbf594a18f049742cc02d67f0c86a772.ctex"
+uid="uid://c82vfj31i5n0f"
+path="res://.godot/imported/ship2.png-0c642055029392b916908af317f29817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://invader.png"
-dest_files=["res://.godot/imported/invader.png-bbf594a18f049742cc02d67f0c86a772.ctex"]
+source_file="res://textures/ship2.png"
+dest_files=["res://.godot/imported/ship2.png-0c642055029392b916908af317f29817.ctex"]
 
 [params]
 

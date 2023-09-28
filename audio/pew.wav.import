@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dbhi0wi7qd15n"
-path="res://.godot/imported/wahwah.wav-060fb4abcfe7227abfb2ef5a5b83359a.sample"
+uid="uid://utk2nu6314l1"
+path="res://.godot/imported/pew.wav-021874a1706e60162f8b48dea1e01693.sample"
 
 [deps]
 
-source_file="res://wahwah.wav"
-dest_files=["res://.godot/imported/wahwah.wav-060fb4abcfe7227abfb2ef5a5b83359a.sample"]
+source_file="res://audio/pew.wav"
+dest_files=["res://.godot/imported/pew.wav-021874a1706e60162f8b48dea1e01693.sample"]
 
 [params]
 
