@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3tb7ibgbys07"]
+[gd_scene load_steps=11 format=3 uid="uid://3tb7ibgbys07"]
 
 [ext_resource type="Texture2D" uid="uid://lfv3uqxxg85l" path="res://textures/star.png" id="1_il4lj"]
 [ext_resource type="Script" path="res://scripts/Star.gd" id="2_6f2qt"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bhgiq186vdm01" path="res://scenes/missile.tscn" id="4_k8ry7"]
 [ext_resource type="Texture2D" uid="uid://c82vfj31i5n0f" path="res://textures/ship2.png" id="5_jb11x"]
 [ext_resource type="PackedScene" uid="uid://diok8w7p8mr57" path="res://scenes/enemy.tscn" id="6_1sdlt"]
-[ext_resource type="AudioStream" uid="uid://utk2nu6314l1" path="res://audio/pew.wav" id="6_ab22l"]
+[ext_resource type="AudioStream" uid="uid://bunuojl70gelk" path="res://audio/shot.wav" id="6_wfx0w"]
+[ext_resource type="Script" path="res://scenes/enemies.gd" id="7_cy7cf"]
 [ext_resource type="FontFile" uid="uid://c6m8u05n0002q" path="res://digitalix.ttf" id="7_ghcaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfuk"]
@@ -98,39 +99,11 @@ position = Vector2(1, 1)
 texture = ExtResource("5_jb11x")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
-stream = ExtResource("6_ab22l")
+stream = ExtResource("6_wfx0w")
 
-[node name="enemies" type="Node" parent="."]
-
-[node name="enemy" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(121.27, 181.824)
-
-[node name="enemy2" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(221.27, 181.824)
-
-[node name="enemy3" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(324.27, 181.824)
-
-[node name="enemy4" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(424.27, 181.824)
-
-[node name="enemy5" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(522.27, 181.824)
-
-[node name="enemy6" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(121.27, 283.824)
-
-[node name="enemy7" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(221.27, 283.824)
-
-[node name="enemy8" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(324.27, 283.824)
-
-[node name="enemy9" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(424.27, 283.824)
-
-[node name="enemy10" parent="enemies" instance=ExtResource("6_1sdlt")]
-position = Vector2(522.27, 283.824)
+[node name="enemies" type="Node2D" parent="."]
+script = ExtResource("7_cy7cf")
+enemyTemplate = ExtResource("6_1sdlt")
 
 [node name="interface" type="Control" parent="."]
 layout_mode = 3

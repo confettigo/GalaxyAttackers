@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dbhi0wi7qd15n"
-path="res://.godot/imported/wahwah.wav-f84857da9517efcd0b3cee775f4f5da4.sample"
+uid="uid://bw240oj4xrm41"
+path="res://.godot/imported/chime.wav-64b9a93845edc1f652428a0fa9a37283.sample"
 
 [deps]
 
-source_file="res://audio/wahwah.wav"
-dest_files=["res://.godot/imported/wahwah.wav-f84857da9517efcd0b3cee775f4f5da4.sample"]
+source_file="res://audio/chime.wav"
+dest_files=["res://.godot/imported/chime.wav-64b9a93845edc1f652428a0fa9a37283.sample"]
 
 [params]
 

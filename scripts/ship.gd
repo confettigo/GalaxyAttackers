@@ -39,7 +39,8 @@ func _shoot():
 	instance.position = self.position
 	instance.position.y -= 10
 	instance.show()
-	print(global.deaths)
+	if global.deaths%10 == 0 && global.deaths != 0:
+		print("wave complete")
 
 
 func _on_enemy_body_entered(body):

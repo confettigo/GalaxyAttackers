@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://utk2nu6314l1"
-path="res://.godot/imported/pew.wav-021874a1706e60162f8b48dea1e01693.sample"
+uid="uid://dss8maykw0k2g"
+path="res://.godot/imported/chimep.wav-340c22b0a8054ebbfa5baddf869d134f.sample"
 
 [deps]
 
-source_file="res://audio/pew.wav"
-dest_files=["res://.godot/imported/pew.wav-021874a1706e60162f8b48dea1e01693.sample"]
+source_file="res://audio/chimep.wav"
+dest_files=["res://.godot/imported/chimep.wav-340c22b0a8054ebbfa5baddf869d134f.sample"]
 
 [params]
 
