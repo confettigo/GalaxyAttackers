@@ -8,6 +8,7 @@ const SPEED = 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var screen_width = 0
 var instance
+signal lifeCounterUpdate
 
 func _ready():
 	screen_width = get_viewport().get_visible_rect().size.x
@@ -42,6 +43,12 @@ func _shoot():
 	if global.deaths%10 == 0 && global.deaths != 0:
 		print("wave complete")
 
+func onPlayerDeath():
+	if ScoreManager.hasLost == true:
+		global.lives -= 1
+		print(global.lives)
+		lifeCounterUpdate.emit()
+	#add shit to show the player dying and all that
 
 func _on_enemy_body_entered(body):
 	pass # Replace with function body.

@@ -124,19 +124,8 @@ text = "SCORE: 0"
 [node name="Label2" type="Label" parent="interface"]
 layout_mode = 0
 offset_top = 49.0
-offset_right = 260.0
+offset_right = 44.0
 offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("7_ghcaj")
 theme_override_font_sizes/font_size = 40
 text = "LIVES: 3"
-
-[node name="Label3" type="Label" parent="interface"]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 49.0
-offset_right = 638.0
-offset_bottom = 93.0
-theme_override_fonts/font = ExtResource("7_ghcaj")
-theme_override_font_sizes/font_size = 40
-text = "WAVE: 1"
-horizontal_alignment = 2

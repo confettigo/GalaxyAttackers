@@ -5,6 +5,7 @@ var multiplier
 var direction = 1
 var parent
 @onready var animatedSprite = $AnimatedSprite2D
+signal lose
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,8 @@ func _process(delta):
 	move_local_x(speed*delta*multiplier*direction)
 	if self.position.x > screen_width - 40 || self.position.x < 40:
 		parent.changeDirections(-direction)
+	if self.position.y > 780:
+		lose.emit()
 	
 func changeDirection(change):
 	self.position.y += 100
@@ -33,7 +36,8 @@ func death(area):
 	area.position.x = -100
 	animatedSprite.play("deathAnim", 4)
 	
-
+func clearOut():
+	queue_free()
 
 func _on_animated_sprite_2d_animation_finished():
 	queue_free()
