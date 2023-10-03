@@ -7,7 +7,7 @@ var livesText
 var waveText
 signal respawn
 var enemiesScript
-var hasLost
+var hasLost = false
 var ship
 var respawning
 
@@ -34,14 +34,14 @@ func onDeath():
 	if global.deaths%10 == 0:
 		node2.stream = preload("res://audio/chimep.wav")
 		node2.play()
+		await get_tree().create_timer(2).timeout
 		respawn.emit()
 
 func loseState():
-	if hasLost == true:
-		return
-		print("return fail")
-	hasLost = true
 	ship.onPlayerDeath()
+	await get_tree().create_timer(1).timeout
+	node2.stream = preload("res://audio/deathchime.wav")
+	node2.play()
 
 func lifecount():
 	livesText.text = "LIVES: " + str(global.lives)

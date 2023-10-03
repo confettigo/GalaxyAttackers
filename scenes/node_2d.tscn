@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3tb7ibgbys07"]
+[gd_scene load_steps=18 format=3 uid="uid://3tb7ibgbys07"]
 
 [ext_resource type="Texture2D" uid="uid://lfv3uqxxg85l" path="res://textures/star.png" id="1_il4lj"]
 [ext_resource type="Script" path="res://scripts/Star.gd" id="2_6f2qt"]
@@ -7,11 +7,60 @@
 [ext_resource type="Texture2D" uid="uid://c82vfj31i5n0f" path="res://textures/ship2.png" id="5_jb11x"]
 [ext_resource type="PackedScene" uid="uid://diok8w7p8mr57" path="res://scenes/enemy.tscn" id="6_1sdlt"]
 [ext_resource type="AudioStream" uid="uid://bunuojl70gelk" path="res://audio/shot.wav" id="6_wfx0w"]
+[ext_resource type="Texture2D" uid="uid://c78m6rnxrug3r" path="res://textures/invader.png" id="6_ysdsw"]
 [ext_resource type="Script" path="res://scenes/enemies.gd" id="7_cy7cf"]
 [ext_resource type="FontFile" uid="uid://c6m8u05n0002q" path="res://digitalix.ttf" id="7_ghcaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfuk"]
 size = Vector2(79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md7mg"]
+atlas = ExtResource("5_jb11x")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maucm"]
+atlas = ExtResource("6_ysdsw")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hli1c"]
+atlas = ExtResource("6_ysdsw")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8fv5"]
+atlas = ExtResource("6_ysdsw")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0rd5"]
+atlas = ExtResource("6_ysdsw")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3q2nl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md7mg")
+}],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maucm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hli1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8fv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0rd5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -84,9 +133,10 @@ script = ExtResource("2_6f2qt")
 
 [node name="projectiles" type="Node2D" parent="."]
 
-[node name="player" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animatedSprite")]
 position = Vector2(338, 812)
 script = ExtResource("3_1dnf3")
+animatedSprite = NodePath("Sprite2D")
 missile = ExtResource("4_k8ry7")
 projectiles = NodePath("../projectiles")
 
@@ -94,9 +144,10 @@ projectiles = NodePath("../projectiles")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vnfuk")
 
-[node name="Sprite2D" type="Sprite2D" parent="player"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(1, 1)
-texture = ExtResource("5_jb11x")
+sprite_frames = SubResource("SpriteFrames_3q2nl")
+animation = &"death"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource("6_wfx0w")
@@ -140,3 +191,5 @@ theme_override_fonts/font = ExtResource("7_ghcaj")
 theme_override_font_sizes/font_size = 40
 text = "WAVE: 1"
 horizontal_alignment = 2
+
+[connection signal="animation_finished" from="player/Sprite2D" to="player" method="_on_sprite_2d_animation_finished"]

@@ -12,8 +12,6 @@ func spawn():
 	global.deaths = 0
 	if ScoreManager.respawning == false:
 		global.wave += 1
-	else:
-		ScoreManager.hasLost = false
 	ScoreManager.waveUpdate()
 	for b in 2:
 		for i in 5:
@@ -24,6 +22,7 @@ func spawn():
 			enemy.lose.connect(lose)
 	enemyList = get_children()
 	ScoreManager.respawning = false
+	ScoreManager.hasLost = false
 
 func changeDirections(direction):
 	for enemy in get_children():
@@ -31,6 +30,7 @@ func changeDirections(direction):
 
 func lose():
 	for enemy in get_children():
+		enemy.position.y -= 900
 		enemy.clearOut()
 	loser.emit()
 

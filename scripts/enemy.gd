@@ -4,6 +4,7 @@ var screen_width
 var multiplier
 var direction = 1
 var parent
+var isDead = false
 @onready var animatedSprite = $AnimatedSprite2D
 signal lose
 
@@ -20,7 +21,9 @@ func _process(delta):
 	if self.position.x > screen_width - 40 || self.position.x < 40:
 		parent.changeDirections(-direction)
 	if self.position.y > 780:
-		lose.emit()
+		if !ScoreManager.hasLost:
+			ScoreManager.hasLost = true
+			lose.emit()
 	
 func changeDirection(change):
 	self.position.y += 100
@@ -28,10 +31,12 @@ func changeDirection(change):
 	pass
 
 func _on_area_entered(area):
-	if area.is_in_group("missile"):
+	if area.is_in_group("missile") && !isDead && area.isEnabled:
+		area.isEnabled = false
 		death(area)
 
 func death(area):
+	isDead = true
 	ScoreManager.onDeath()
 	area.position.x = -100
 	animatedSprite.play("deathAnim", 4)
