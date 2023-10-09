@@ -39,9 +39,6 @@ func onDeath():
 
 func loseState():
 	ship.onPlayerDeath()
-	await get_tree().create_timer(1).timeout
-	node2.stream = preload("res://audio/deathchime.wav")
-	node2.play()
 
 func lifecount():
 	livesText.text = "LIVES: " + str(global.lives)
@@ -49,8 +46,13 @@ func lifecount():
 	global.deaths = 0
 	if global.lives <= 0:
 		waveText.text = "GAME OVER"
+		node2.stream = preload("res://audio/gameover.wav")
+		node2.play()
 		return
 	elif global.lives > 0:
+		node2.stream = preload("res://audio/deathchime.wav")
+		node2.play()
+		await get_tree().create_timer(.3).timeout
 		respawn.emit()
 
 func waveUpdate():
