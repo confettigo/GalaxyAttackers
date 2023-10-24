@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3tb7ibgbys07"]
+[gd_scene load_steps=19 format=3 uid="uid://3tb7ibgbys07"]
 
 [ext_resource type="Script" path="res://scripts/starManager.gd" id="1_3erjh"]
 [ext_resource type="PackedScene" uid="uid://cltpxqabn0cho" path="res://scenes/star.tscn" id="2_frnav"]
@@ -10,15 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c78m6rnxrug3r" path="res://textures/invader.png" id="6_ysdsw"]
 [ext_resource type="FontFile" uid="uid://c6m8u05n0002q" path="res://digitalix.ttf" id="7_ghcaj"]
 [ext_resource type="Script" path="res://scripts/enemies.gd" id="9_oi7cr"]
-[ext_resource type="Script" path="res://scripts/asteroidManager.gd" id="11_fpvyc"]
-[ext_resource type="PackedScene" uid="uid://jb4gshaudo1r" path="res://scenes/asteroid.tscn" id="12_s1qmi"]
-[ext_resource type="PackedScene" uid="uid://vh316fa0pwdo" path="res://scenes/mothership.tscn" id="13_hivvd"]
+[ext_resource type="Script" path="res://scenes/asteroidManager.gd" id="11_wnppl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1olkn"]
-size = Vector2(39, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn5qh"]
-size = Vector2(78, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfuk"]
+size = Vector2(79, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md7mg"]
 atlas = ExtResource("5_jb11x")
@@ -84,17 +79,13 @@ missile = ExtResource("4_k8ry7")
 projectiles = NodePath("../projectiles")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(0.5, -19.5)
-shape = SubResource("RectangleShape2D_1olkn")
-
-[node name="playershape" type="CollisionShape2D" parent="player"]
-position = Vector2(1, 21)
-shape = SubResource("RectangleShape2D_hn5qh")
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vnfuk")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_3q2nl")
-animation = &"alive"
+animation = &"death"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource("6_wfx0w")
@@ -149,8 +140,6 @@ text = "WAVE: 1"
 horizontal_alignment = 2
 
 [node name="asteroidManager" type="Node2D" parent="."]
-script = ExtResource("11_fpvyc")
-astScene = ExtResource("12_s1qmi")
-mothershipScene = ExtResource("13_hivvd")
+script = ExtResource("11_wnppl")
 
 [connection signal="animation_finished" from="player/Sprite2D" to="player" method="_on_sprite_2d_animation_finished"]

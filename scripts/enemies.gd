@@ -11,8 +11,12 @@ func _ready():
 func spawn():
 	global.deaths = 0
 	if ScoreManager.respawning == false:
-		global.wave += 1
-	ScoreManager.waveUpdate()
+		if !ScoreManager.exitingBonus:
+			global.wave += 1
+			global.bonusCounter += 1
+			ScoreManager.waveUpdate()
+			if global.bonusCounter == 0 && global.wave != 1:
+				return
 	for b in 2:
 		for i in 5:
 			var enemy = enemyTemplate.instantiate()
@@ -23,6 +27,7 @@ func spawn():
 	enemyList = get_children()
 	ScoreManager.respawning = false
 	ScoreManager.hasLost = false
+	ScoreManager.exitingBonus = false
 
 func changeDirections(direction):
 	for enemy in get_children():

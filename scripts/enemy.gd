@@ -33,6 +33,7 @@ func changeDirection(change):
 func _on_area_entered(area):
 	if area.is_in_group("missile") && !isDead && area.isEnabled:
 		area.isEnabled = false
+		global.hits += 1
 		death(area)
 
 func death(area):
