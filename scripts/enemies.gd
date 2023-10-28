@@ -6,7 +6,7 @@ signal loser
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ScoreManager.respawn.connect(spawn)
-	spawn()
+	ScoreManager.espawn.connect(spawn)
 
 func spawn():
 	global.deaths = 0

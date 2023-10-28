@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://bm364oagci57b"]
+
+[ext_resource type="Script" path="res://scripts/ship.gd" id="1_6l6l8"]
+[ext_resource type="PackedScene" uid="uid://bhgiq186vdm01" path="res://scenes/missile.tscn" id="2_6g8rd"]
+[ext_resource type="Texture2D" uid="uid://c82vfj31i5n0f" path="res://textures/ship2.png" id="3_fofn5"]
+[ext_resource type="Texture2D" uid="uid://c78m6rnxrug3r" path="res://textures/invader.png" id="4_641q8"]
+[ext_resource type="AudioStream" uid="uid://bunuojl70gelk" path="res://audio/shot.wav" id="5_f0ivo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1olkn"]
+size = Vector2(39, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn5qh"]
+size = Vector2(78, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md7mg"]
+atlas = ExtResource("3_fofn5")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maucm"]
+atlas = ExtResource("4_641q8")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hli1c"]
+atlas = ExtResource("4_641q8")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8fv5"]
+atlas = ExtResource("4_641q8")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0rd5"]
+atlas = ExtResource("4_641q8")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3q2nl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md7mg")
+}],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maucm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hli1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8fv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0rd5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite")]
+position = Vector2(338, 812)
+script = ExtResource("1_6l6l8")
+animatedSprite = NodePath("Sprite2D")
+missile = ExtResource("2_6g8rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -19.5)
+shape = SubResource("RectangleShape2D_1olkn")
+
+[node name="playershape" type="CollisionShape2D" parent="."]
+position = Vector2(1, 21)
+shape = SubResource("RectangleShape2D_hn5qh")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_3q2nl")
+animation = &"alive"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f0ivo")
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]

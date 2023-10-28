@@ -1,6 +1,6 @@
 extends Area2D
 var screen_width = 0
-var speed = randi_range(250,325)
+var speed = randi_range(230,305)+(global.wave*10)
 var canMove = true
 
 # Called when the node enters the scene tree for the first time.

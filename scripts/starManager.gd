@@ -4,7 +4,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ScoreManager.killStars.connect(killStars)
-	spawn()
+	ScoreManager.spawnStars.connect(spawn)
+	
 
 func spawn():
 	for i in 12:
@@ -14,7 +15,7 @@ func spawn():
 
 func killStars():
 	for star in get_children():
-		star.stop()
+		star.die()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -15,7 +15,7 @@ var sound
 var canShoot = true
 var bonus = false
 var canMove = true
-
+var flewout = false
 func _ready():
 	animatedSprite.play("alive")
 	screen_width = get_viewport().get_visible_rect().size.x
@@ -43,8 +43,12 @@ func getInput():
 	if self.position.y > screen_height - 45:
 		if input_direction.y > 0:
 			input_direction.y = 0
-	if self.position.y > 135:
-		pass
+	if self.position.y < 170:
+		if !flewout:
+			flewout = true
+			canMove= false
+			self.position.y = 171
+			ScoreManager.badEndBonus()
 	velocity = input_direction * SPEED
 
 func _physics_process(delta):
